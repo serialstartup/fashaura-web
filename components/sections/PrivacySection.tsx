@@ -8,35 +8,35 @@ export default function PrivacySection() {
   const privacyFeatures = [
     {
       icon: Shield,
-      title: "End-to-End Encryption",
-      description: "Your photos are encrypted before leaving your device and remain secure throughout processing.",
+      title: "Uçtan Uca Şifreleme",
+      description: "Fotoğraflarınız cihazınızı terk etmeden önce şifrelenir ve tüm işlem boyunca güvenli kalır.",
       color: "green"
     },
     {
       icon: Lock,
-      title: "Zero Data Storage",
-      description: "We don't store your personal photos on our servers. Processing happens instantly and securely.",
+      title: "Sıfır Veri Depolama",
+      description: "Kişisel fotoğraflarınızı sunucularımızda saklamayız. İşlem anında ve güvenli bir şekilde gerçekleşir.",
       color: "blue"
     },
     {
       icon: Eye,
-      title: "Privacy by Design",
-      description: "Our AI models are designed to analyze clothing fit without compromising your privacy.",
+      title: "Tasarımdan Gizlilik",
+      description: "Yapay zeka modellerimiz gizliliğinizi tehlikeye atmadan kıyafet uyumunu analiz etmek için tasarlanmıştır.",
       color: "purple"
     },
     {
       icon: Database,
-      title: "GDPR Compliant",
-      description: "We're fully compliant with GDPR, CCPA, and other international privacy regulations.",
+      title: "GDPR Uyumlu",
+      description: "GDPR, CCPA ve diğer uluslararası gizlilik düzenlemelerine tam olarak uyumluyuz.",
       color: "amber"
     }
   ]
 
   const trustBadges = [
-    { name: "SOC 2 Type II", status: "Certified" },
-    { name: "ISO 27001", status: "Compliant" },
-    { name: "GDPR", status: "Compliant" },
-    { name: "Privacy Shield", status: "Verified" }
+    { name: "SOC 2 Type II", status: "Sertifikalı" },
+    { name: "ISO 27001", status: "Uyumlu" },
+    { name: "GDPR", status: "Uyumlu" },
+    { name: "Privacy Shield", status: "Doğrulanmış" }
   ]
 
   const colorVariants = {
@@ -58,13 +58,13 @@ export default function PrivacySection() {
           >
             <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-4 py-2 rounded-full text-sm font-medium mb-8">
               <Shield className="w-4 h-4" />
-              Your Privacy Matters
+              Gizliliğiniz Önemli
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Trusted & <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Secure</span>
+              Güvenilir & <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Güvenli</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              We believe privacy is a fundamental right. That's why we've built Fashaura AI with security and privacy at its core.
+              Gizliliğin temel bir hak olduğuna inanıyoruz. Bu yüzden Fashaura AI'yı güvenlik ve gizliliği merkez alarak inşa ettik.
             </p>
           </motion.div>
         </div>
@@ -112,7 +112,7 @@ export default function PrivacySection() {
           className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 mb-16"
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
-            Security Certifications
+            Güvenlik Sertifikaları
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {trustBadges.map((badge, index) => (
@@ -157,11 +157,11 @@ export default function PrivacySection() {
               <Heart className="w-8 h-8 text-white" />
             </motion.div>
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Our Privacy Promise
+              Gizlilik Sözümüz
             </h3>
             <p className="text-lg text-white/90 mb-6 leading-relaxed">
-              Your photos, your data, your choice. We will never sell, share, or misuse your personal information. 
-              Our AI technology works for you, not against you.
+              Fotoğraflarınız, verileriniz, seçiminiz. Kişisel bilgilerinizi asla satmayacak, paylaşmayacak veya kötüye kullanmayacağız. 
+              Yapay zeka teknolojimiz sizin için çalışır, size karşı değil.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
@@ -170,7 +170,7 @@ export default function PrivacySection() {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all"
               >
-                Read Privacy Policy
+                Gizlilik Politikasını Oku
                 <ExternalLink className="w-4 h-4" />
               </motion.a>
               <motion.a
@@ -179,7 +179,7 @@ export default function PrivacySection() {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-all"
               >
-                Security Whitepaper
+                Güvenlik Belgesi
                 <ExternalLink className="w-4 h-4" />
               </motion.a>
             </div>
@@ -195,10 +195,10 @@ export default function PrivacySection() {
           className="text-center mt-16 pt-8 border-t border-gray-200 dark:border-gray-700"
         >
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            © 2025 Fashaura AI. All rights reserved. • 
-            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Privacy Policy</a> • 
-            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Terms of Service</a> • 
-            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Contact Us</a>
+            © 2025 Fashaura AI. Tüm hakları saklıdır. • 
+            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Gizlilik Politikası</a> • 
+            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Hizmet Koşulları</a> • 
+            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Bize Ulaşın</a>
           </p>
         </motion.div>
       </Container>

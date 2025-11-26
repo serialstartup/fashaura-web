@@ -4,6 +4,7 @@ import ShowcaseSection from "@/components/sections/ShowcaseSection"
 import StoreBadgesSection from "@/components/sections/StoreBadgesSection"
 import BetaSignupSection from "@/components/sections/BetaSignupSection"
 import PrivacySection from "@/components/sections/PrivacySection"
+import TestimonialsSection from "@/components/sections/TestimonialsSection"
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <HowItWorksSection />
       <ShowcaseSection />
       <StoreBadgesSection />
+      <TestimonialsSection />
       <BetaSignupSection />
       <PrivacySection />
     </main>

@@ -1,14 +1,17 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { motion } from "motion/react"
 import { Mail, ArrowRight, CheckCircle, Sparkles, Users } from "lucide-react"
 import { Container } from "@/components/ui/Container"
+import { Confetti, type ConfettiRef } from "@/components/ui/confetti"
+import { SparklesText } from "@/components/ui/sparkles-text"
 
 export default function BetaSignupSection() {
   const [email, setEmail] = useState("")
   const [isSubscribed, setIsSubscribed] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const confettiRef = useRef<ConfettiRef>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -19,17 +22,36 @@ export default function BetaSignupSection() {
     await new Promise(resolve => setTimeout(resolve, 1000))
     setIsSubscribed(true)
     setIsLoading(false)
+    
+    // Trigger confetti effect
+    setTimeout(() => {
+      confettiRef.current?.fire({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#9333ea', '#ec4899', '#06b6d4'],
+        startVelocity: 45,
+        scalar: 1.2
+      })
+    }, 300)
   }
 
   const features = [
-    "Early access to all features",
-    "Priority customer support", 
-    "Exclusive beta testing opportunities",
-    "Special launch pricing"
+    "Tüm özelliklere erken erişim",
+    "Öncelikli müşteri desteği", 
+    "Sadece beta test fırsatları",
+    "Özel lansman fiyatlandırması"
   ]
 
   return (
     <section className="py-24 bg-gradient-to-br from-purple-600 via-pink-600 to-indigo-700 relative overflow-hidden">
+      {/* Confetti Canvas */}
+      <Confetti
+        ref={confettiRef}
+        className="absolute inset-0 pointer-events-none"
+        manualstart
+      />
+      
       {/* Background decorations */}
       <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
       <div className="absolute top-20 left-10 w-32 h-32 bg-white/5 rounded-full blur-3xl" />
@@ -52,20 +74,23 @@ export default function BetaSignupSection() {
               className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-8"
             >
               <Sparkles className="w-4 h-4" />
-              Limited Beta Access
+              Sınırlı Beta Erişimi
             </motion.div>
 
             {/* Headline */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Be the First to
+              İlk Sen Ol
               <br />
-              <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                Experience Magic
-              </span>
+              <SparklesText
+                colors={{ first: "#fde047", second: "#fb923c" }}
+                className="text-4xl md:text-5xl lg:text-6xl inline-block mt-2"
+              >
+                Sihri Yaşa
+              </SparklesText>
             </h2>
 
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-12 leading-relaxed">
-              Join our exclusive beta program and get early access to revolutionary AI-powered virtual try-on technology before anyone else.
+              Özel beta programımıza katılın ve devrimsel yapay zeka destekli sanal deneme teknolojisine herkesten önce erken erişim sağlayın.
             </p>
           </motion.div>
 
@@ -84,13 +109,13 @@ export default function BetaSignupSection() {
                 >
                   <CheckCircle className="w-8 h-8 text-white" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-white mb-2">You're In!</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Ön Kayıt Tamamlandı!</h3>
                 <p className="text-white/90 mb-4">
-                  Welcome to the Fashaura AI beta program. We'll send you an invitation soon.
+                  Fashaura AI beta programına hoş geldiniz. Size yakında davetiye göndereceğiz.
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white/80 text-sm">
                   <Users className="w-4 h-4" />
-                  You're #1,247 on the waitlist
+                  Bekleme listesinde #1,247. sıradayısınız
                 </div>
               </div>
             </motion.div>
@@ -108,7 +133,7 @@ export default function BetaSignupSection() {
                     <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                     <input
                       type="email"
-                      placeholder="Enter your email address"
+                      placeholder="E-posta adresinizi girin"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full pl-12 pr-4 py-4 bg-white/20 backdrop-blur-sm border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all"
@@ -126,7 +151,7 @@ export default function BetaSignupSection() {
                       <div className="w-5 h-5 border-2 border-purple-600/20 border-t-purple-600 rounded-full animate-spin" />
                     ) : (
                       <>
-                        Join Beta
+                        Beta'ya Katıl
                         <ArrowRight className="w-5 h-5" />
                       </>
                     )}
@@ -135,7 +160,7 @@ export default function BetaSignupSection() {
               </form>
 
               <p className="text-white/70 text-sm mb-8">
-                No spam, unsubscribe at any time. We respect your privacy.
+                Spam yok, istediğiniz zaman abonelikten çıkabilirsiniz. Gizliliğinize saygı duyuyoruz.
               </p>
             </motion.div>
           )}
@@ -176,17 +201,17 @@ export default function BetaSignupSection() {
             <div className="flex items-center justify-center gap-8 text-white/80">
               <div className="text-center">
                 <div className="text-2xl font-bold text-white mb-1">2,500+</div>
-                <div className="text-sm">Beta Applicants</div>
+                <div className="text-sm">Beta Başvurusu</div>
               </div>
               <div className="w-px h-8 bg-white/20" />
               <div className="text-center">
                 <div className="text-2xl font-bold text-white mb-1">4.9★</div>
-                <div className="text-sm">Expected Rating</div>
+                <div className="text-sm">Beklenen Puan</div>
               </div>
               <div className="w-px h-8 bg-white/20" />
               <div className="text-center">
-                <div className="text-2xl font-bold text-white mb-1">Q1 2025</div>
-                <div className="text-sm">Launch Date</div>
+                <div className="text-2xl font-bold text-white mb-1">2025 Q1</div>
+                <div className="text-sm">Lansman Tarihi</div>
               </div>
             </div>
           </motion.div>
