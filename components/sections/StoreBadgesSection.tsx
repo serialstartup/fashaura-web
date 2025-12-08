@@ -3,31 +3,34 @@
 import { motion } from "motion/react"
 import { Smartphone, Shield, Zap, Sparkles } from "lucide-react"
 import { Container } from "@/components/ui/Container"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function StoreBadgesSection() {
+  const { t } = useLanguage();
+  
   const features = [
     {
       icon: Smartphone,
-      title: "Tüm Platformlar",
-      description: "iOS ve Android",
+      title: t.storeBadges.features.allPlatforms.title,
+      description: t.storeBadges.features.allPlatforms.description,
       delay: 0.2
     },
     {
       icon: Shield,
-      title: "Gizlilik Öncelikli",
-      description: "Verileriniz Korumalı",
+      title: t.storeBadges.features.privacy.title,
+      description: t.storeBadges.features.privacy.description,
       delay: 0.4
     },
     {
       icon: Zap,
-      title: "Yıldırım Hızı",
-      description: "Anında Deneme",
+      title: t.storeBadges.features.speed.title,
+      description: t.storeBadges.features.speed.description,
       delay: 0.6
     },
     {
       icon: Sparkles,
-      title: "Yapay Zeka Destekli",
-      description: "Gelişmiş Teknoloji",
+      title: t.storeBadges.features.ai.title,
+      description: t.storeBadges.features.ai.description,
       delay: 0.8
     }
   ]
@@ -46,10 +49,10 @@ export default function StoreBadgesSection() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              <span className="bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Yakında</span> İndirin
+              <span className="bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{t.storeBadges.title.highlight}</span> {t.storeBadges.title.normal}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12">
-              Devrimsel yapay zeka destekli sanal deneme teknolojimizle modanın geleceğini deneyimleyin.
+              {t.storeBadges.subtitle}
             </p>
           </motion.div>
         </div>
@@ -99,15 +102,22 @@ export default function StoreBadgesSection() {
             whileTap={{ scale: 0.95 }}
             className="cursor-pointer"
           >
-            <div className="bg-black rounded-xl px-8 py-4 flex items-center gap-4 min-w-[200px]">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <div className="w-6 h-6 bg-linear-to-br from-purple-600 to-pink-600 rounded" />
+            <a 
+              href="https://apps.apple.com/app/fashaura/id123456789" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="bg-black rounded-xl px-8 py-4 flex items-center gap-4 min-w-[200px]">
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                  <div className="w-6 h-6 bg-linear-to-br from-purple-600 to-pink-600 rounded" />
+                </div>
+                <div className="text-white">
+                  <p className="text-xs">{t.storeBadges.downloadButtons.appStore.action}</p>
+                  <p className="text-xl font-semibold">{t.storeBadges.downloadButtons.appStore.store}</p>
+                </div>
               </div>
-              <div className="text-white">
-                <p className="text-xs">İndir</p>
-                <p className="text-xl font-semibold">App Store</p>
-              </div>
-            </div>
+            </a>
           </motion.div>
 
           {/* Google Play Badge */}
@@ -116,15 +126,22 @@ export default function StoreBadgesSection() {
             whileTap={{ scale: 0.95 }}
             className="cursor-pointer"
           >
-            <div className="bg-black rounded-xl px-8 py-4 flex items-center gap-4 min-w-[200px]">
-              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <div className="w-6 h-6 bg-linear-to-br from-green-500 to-blue-500 rounded" />
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.fashaura.virtual_room" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="bg-black rounded-xl px-8 py-4 flex items-center gap-4 min-w-[200px]">
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                  <div className="w-6 h-6 bg-linear-to-br from-green-500 to-blue-500 rounded" />
+                </div>
+                <div className="text-white">
+                  <p className="text-xs">{t.storeBadges.downloadButtons.googlePlay.action}</p>
+                  <p className="text-xl font-semibold">{t.storeBadges.downloadButtons.googlePlay.store}</p>
+                </div>
               </div>
-              <div className="text-white">
-                <p className="text-xs">Al</p>
-                <p className="text-xl font-semibold">Google Play</p>
-              </div>
-            </div>
+            </a>
           </motion.div>
         </motion.div>
 
@@ -138,10 +155,10 @@ export default function StoreBadgesSection() {
         >
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              Tarayarak İndirin
+              {t.storeBadges.qrCode.title}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 max-w-sm">
-              QR kodu taramak ve uygulamayı anında indirmek için telefon kamerasını kullanın.
+              {t.storeBadges.qrCode.description}
             </p>
           </div>
           
@@ -171,20 +188,20 @@ export default function StoreBadgesSection() {
           className="text-center mt-12"
         >
           <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-            iOS ve Android platformları için yakında
+            {t.storeBadges.compatibility.platforms}
           </p>
           <div className="flex items-center justify-center gap-6">
             <div className="flex items-center gap-2 text-xs text-gray-400">
               <div className="w-2 h-2 bg-green-500 rounded-full" />
-              Gerçek Zamanlı İşlem
+              {t.storeBadges.compatibility.features.realTime}
             </div>
             <div className="flex items-center gap-2 text-xs text-gray-400">
               <div className="w-2 h-2 bg-blue-500 rounded-full" />
-              Gelişmiş Yapay Zeka
+              {t.storeBadges.compatibility.features.advancedAI}
             </div>
             <div className="flex items-center gap-2 text-xs text-gray-400">
               <div className="w-2 h-2 bg-purple-500 rounded-full" />
-              Güvenli ve Gizli
+              {t.storeBadges.compatibility.features.securePrivate}
             </div>
           </div>
         </motion.div>

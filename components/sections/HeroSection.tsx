@@ -5,9 +5,20 @@ import { ArrowRight, Sparkles, Zap } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { WordRotate } from "@/components/ui/word-rotate";
 import { SparklesText } from "@/components/ui/sparkles-text";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function HeroSection() {
-  const rotatingWords = ["Modanı", "Stilini", "Gardırobunu", "Kıyafetini"];
+  const { t } = useLanguage();
+
+  const scrollToBetaSignup = () => {
+    const element = document.getElementById('beta-signup');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
 
   return (
     <section className="min-h-screen flex items-center justify-center bg-linear-to-br from-purple-50 via-pink-50 to-indigo-50 dark:from-purple-950 dark:via-pink-950 dark:to-indigo-950 relative overflow-hidden">
@@ -47,7 +58,7 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-200 px-4 py-2 rounded-full text-sm font-medium mb-8"
           >
             <Sparkles className="w-4 h-4" />
-            Yapay Zeka Destekli Sanal Deneme
+            {t.hero.badge}
           </motion.div>
 
           {/* Main Headline */}
@@ -58,7 +69,7 @@ export default function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="block text-gray-900 dark:text-white"
             >
-              Sanal Olarak
+              {t.hero.title.line1}
             </motion.span>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -71,19 +82,21 @@ export default function HeroSection() {
                 className="text-5xl md:text-7xl lg:text-8xl"
               >
                 <WordRotate
-                  words={rotatingWords}
+                  words={t.hero.title.rotating}
                   duration={2000}
                   className="bg-linear-to-r from-purple-600 via-pink-600 to-indigo-600 bg-clip-text text-transparent"
                 />
               </SparklesText>
-              <motion.span
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="block text-gray-900 dark:text-white mb-4"
-              >
-                Deneyimle
-              </motion.span>
+              {t.hero.title.line3 && (
+                <motion.span
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  className="block text-gray-900 dark:text-white mb-4"
+                >
+                  {t.hero.title.line3}
+                </motion.span>
+              )}
             </motion.div>
           </h1>
 
@@ -94,9 +107,7 @@ export default function HeroSection() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed"
           >
-            Yapay zeka destekli sanal deneme teknolojimizle modanın geleceğini
-            yaşayın. Satın almadan önce kıyafetlerin üzerinizde nasıl durduğunu
-            görün.
+            {t.hero.subtitle}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -107,20 +118,13 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <motion.button
+              onClick={scrollToBetaSignup}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg shadow-purple-500/25"
             >
-              Erken Erişim Al
+              {t.hero.ctaButton}
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-purple-500 hover:text-purple-600 dark:hover:text-purple-400 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
-            >
-              Demo İzle
             </motion.button>
           </motion.div>
         </motion.div>

@@ -4,58 +4,19 @@ import { motion } from "motion/react"
 import { Star, Quote } from "lucide-react"
 import { Container } from "@/components/ui/Container"
 import { Marquee } from "@/components/ui/marquee"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 export default function TestimonialsSection() {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      avatar: "/api/placeholder/60/60",
-      rating: 5,
-      quote: "Fashaura AI online alışveriş deneyimimi tamamen değiştirdi. Sanal deneme özelliği inanılmaz derecede doğru!",
-      role: "Moda Bloggerı"
-    },
-    {
-      id: 2,
-      name: "Maria Garcia",
-      avatar: "/api/placeholder/60/60", 
-      rating: 5,
-      quote: "Satın almadan önce kıyafetlerin üstumde nasıl durduğunu görebilmek harika. Çok zaman ve para tasarrufu sağlıyor!",
-      role: "Online Alışveriş Tutkunu"
-    },
-    {
-      id: 3,
-      name: "Emma Thompson",
-      avatar: "/api/placeholder/60/60",
-      rating: 5,
-      quote: "Yapay zeka teknolojisi gerçekten harika. Cebinizde kişisel bir stilist bulundurmuş gibi.",
-      role: "Stil Meraklısı"
-    },
-    {
-      id: 4,
-      name: "Priya Patel",
-      avatar: "/api/placeholder/60/60",
-      rating: 5,
-      quote: "Nihayet vücut tipime uygun ve güzel duran kıyafetler bulmama yardımcı olan bir uygulama!",
-      role: "Moda Sevdalisi"
-    },
-    {
-      id: 5,
-      name: "Jessica Chen",
-      avatar: "/api/placeholder/60/60",
-      rating: 5,
-      quote: "Sanal deneme özelliği o kadar gerçekçi ki. Kıyafetlerin gerçekte nasıl duracağını bu kadar iyi yakalamasına inanamıyorum.",
-      role: "Teknoloji Uzmanı"
-    },
-    {
-      id: 6,
-      name: "Olivia Rodriguez",
-      avatar: "/api/placeholder/60/60",
-      rating: 5,
-      quote: "Bu uygulama alışveriş deneyimimi devrimleştirdi. Artık uymayan kıyafet almıyorum!",
-      role: "Öğrenci"
-    }
-  ]
+  const { t } = useLanguage();
+  
+  const testimonials = t.testimonials.items.map((item, index) => ({
+    id: index + 1,
+    name: item.name,
+    avatar: "/api/placeholder/60/60",
+    rating: 5,
+    quote: item.quote,
+    role: item.role
+  }));
 
   const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
     <motion.div
@@ -108,10 +69,10 @@ export default function TestimonialsSection() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Kullanıcılarımız <span className="bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Ne Diyor</span>
+              {t.testimonials.title.line1} <span className="bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">{t.testimonials.title.line2}</span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Fashaura AI'nın dünya çapında insanların moda deneyimini nasıl dönüştürdüğünü keşfedin.
+              {t.testimonials.subtitle}
             </p>
           </motion.div>
         </div>

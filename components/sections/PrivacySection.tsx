@@ -1,50 +1,49 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react"
-import { Shield, Lock, Eye, Database, ExternalLink, Heart } from "lucide-react"
-import { Container } from "@/components/ui/Container"
+import { motion } from "motion/react";
+import { Shield, Lock, Eye, Database, ExternalLink, Heart } from "lucide-react";
+import { Container } from "@/components/ui/Container";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function PrivacySection() {
+  const { t } = useLanguage();
+  
   const privacyFeatures = [
     {
       icon: Shield,
-      title: "Uçtan Uca Şifreleme",
-      description: "Fotoğraflarınız cihazınızı terk etmeden önce şifrelenir ve tüm işlem boyunca güvenli kalır.",
-      color: "green"
+      title: t.privacy.features.encryption.title,
+      description: t.privacy.features.encryption.description,
+      color: "green",
     },
     {
       icon: Lock,
-      title: "Sıfır Veri Depolama",
-      description: "Kişisel fotoğraflarınızı sunucularımızda saklamayız. İşlem anında ve güvenli bir şekilde gerçekleşir.",
-      color: "blue"
+      title: t.privacy.features.storage.title,
+      description: t.privacy.features.storage.description,
+      color: "blue",
     },
     {
       icon: Eye,
-      title: "Tasarımdan Gizlilik",
-      description: "Yapay zeka modellerimiz gizliliğinizi tehlikeye atmadan kıyafet uyumunu analiz etmek için tasarlanmıştır.",
-      color: "purple"
+      title: t.privacy.features.design.title,
+      description: t.privacy.features.design.description,
+      color: "purple",
     },
     {
       icon: Database,
-      title: "GDPR Uyumlu",
-      description: "GDPR, CCPA ve diğer uluslararası gizlilik düzenlemelerine tam olarak uyumluyuz.",
-      color: "amber"
-    }
-  ]
-
-  const trustBadges = [
-    { name: "SOC 2 Type II", status: "Sertifikalı" },
-    { name: "ISO 27001", status: "Uyumlu" },
-    { name: "GDPR", status: "Uyumlu" },
-    { name: "Privacy Shield", status: "Doğrulanmış" }
-  ]
+      title: t.privacy.features.compliance.title,
+      description: t.privacy.features.compliance.description,
+      color: "amber",
+    },
+  ];
 
   const colorVariants = {
-    green: "text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30",
+    green:
+      "text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/30",
     blue: "text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30",
-    purple: "text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30",
-    amber: "text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30"
-  }
+    purple:
+      "text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30",
+    amber:
+      "text-amber-600 dark:text-amber-400 bg-amber-100 dark:bg-amber-900/30",
+  };
 
   return (
     <section className="py-24 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
@@ -58,13 +57,16 @@ export default function PrivacySection() {
           >
             <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 px-4 py-2 rounded-full text-sm font-medium mb-8">
               <Shield className="w-4 h-4" />
-              Gizliliğiniz Önemli
+              {t.privacy.badge}
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Güvenilir & <span className="bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Güvenli</span>
+              {t.privacy.title.line1}{" "}
+              <span className="bg-linear-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
+                {t.privacy.title.line2}
+              </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Gizliliğin temel bir hak olduğuna inanıyoruz. Bu yüzden Fashaura AI'yı güvenlik ve gizliliği merkez alarak inşa ettik.
+              {t.privacy.subtitle}
             </p>
           </motion.div>
         </div>
@@ -72,9 +74,10 @@ export default function PrivacySection() {
         {/* Privacy Features */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
           {privacyFeatures.map((feature, index) => {
-            const Icon = feature.icon
-            const colors = colorVariants[feature.color as keyof typeof colorVariants]
-            
+            const Icon = feature.icon;
+            const colors =
+              colorVariants[feature.color as keyof typeof colorVariants];
+
             return (
               <motion.div
                 key={index}
@@ -88,7 +91,9 @@ export default function PrivacySection() {
                   whileHover={{ y: -5 }}
                   className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 h-full"
                 >
-                  <div className={`w-16 h-16 rounded-2xl ${colors} flex items-center justify-center mb-6`}>
+                  <div
+                    className={`w-16 h-16 rounded-2xl ${colors} flex items-center justify-center mb-6`}
+                  >
                     <Icon className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
@@ -99,7 +104,7 @@ export default function PrivacySection() {
                   </p>
                 </motion.div>
               </motion.div>
-            )
+            );
           })}
         </div>
 
@@ -112,10 +117,10 @@ export default function PrivacySection() {
           className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 mb-16"
         >
           <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
-            Güvenlik Sertifikaları
+            {t.privacy.trustBadges.title}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {trustBadges.map((badge, index) => (
+            {t.privacy.trustBadges.items.map((badge, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -124,7 +129,7 @@ export default function PrivacySection() {
                 viewport={{ once: true }}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-linear-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-xl flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-green-600 dark:text-green-400" />
                 </div>
                 <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1">
@@ -146,7 +151,7 @@ export default function PrivacySection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="max-w-3xl mx-auto bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-white">
+          <div className="max-w-3xl mx-auto bg-linear-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-white">
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
@@ -157,29 +162,30 @@ export default function PrivacySection() {
               <Heart className="w-8 h-8 text-white" />
             </motion.div>
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Gizlilik Sözümüz
+              {t.privacy.promise.title}
             </h3>
             <p className="text-lg text-white/90 mb-6 leading-relaxed">
-              Fotoğraflarınız, verileriniz, seçiminiz. Kişisel bilgilerinizi asla satmayacak, paylaşmayacak veya kötüye kullanmayacağız. 
-              Yapay zeka teknolojimiz sizin için çalışır, size karşı değil.
+              {t.privacy.promise.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.a
-                href="#"
+                target="_blank"
+                href="https://serialstartup.github.io/virtual-room-mobile/privacy-policy"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-white/90 transition-all"
               >
-                Gizlilik Politikasını Oku
+                {t.privacy.promise.privacyPolicyButton}
                 <ExternalLink className="w-4 h-4" />
               </motion.a>
               <motion.a
-                href="#"
+                target="_blank"
+                href="https://serialstartup.github.io/virtual-room-mobile/terms-and-conditions"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-all"
               >
-                Güvenlik Belgesi
+                {t.privacy.promise.securityDocButton}
                 <ExternalLink className="w-4 h-4" />
               </motion.a>
             </div>
@@ -195,13 +201,30 @@ export default function PrivacySection() {
           className="text-center mt-16 pt-8 border-t border-gray-200 dark:border-gray-700"
         >
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            © 2025 Fashaura AI. Tüm hakları saklıdır. • 
-            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Gizlilik Politikası</a> • 
-            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Hizmet Koşulları</a> • 
-            <a href="#" className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1">Bize Ulaşın</a>
+            {t.privacy.footer.copyright} •
+            <a
+              href="#"
+              className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1"
+            >
+              {t.privacy.footer.privacyPolicy}
+            </a>{" "}
+            •
+            <a
+              href="#"
+              className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1"
+            >
+              {t.privacy.footer.termsOfService}
+            </a>{" "}
+            •
+            <a
+              href="#"
+              className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors ml-1"
+            >
+              {t.privacy.footer.contactUs}
+            </a>
           </p>
         </motion.div>
       </Container>
     </section>
-  )
+  );
 }

@@ -3,38 +3,37 @@
 import { motion } from "motion/react";
 import { Upload, Scan, User, Type } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function HowItWorksSection() {
+  const { t } = useLanguage();
+  
   const aiModes = [
     {
       icon: Upload,
-      title: "Klasik Deneme",
-      description:
-        "Fotoğrafınızı ve bir giyim eşyasını yükleyerek yapay zeka hassasiyetiyle üzerinizde nasıl durduğunu görün.",
+      title: t.howItWorks.modes.classic.title,
+      description: t.howItWorks.modes.classic.description,
       color: "purple",
       delay: 0.2,
     },
     {
       icon: Scan,
-      title: "Ürün-Model Eşleştirme",
-      description:
-        "Katalogumuzdan istediğiniz ürünü seçin ve yüklediğiniz fotoğrafta mükemmel uyumla görün.",
+      title: t.howItWorks.modes.productMatch.title,
+      description: t.howItWorks.modes.productMatch.description,
       color: "pink",
       delay: 0.4,
     },
     {
       icon: User,
-      title: "Avatar Oluşturma",
-      description:
-        "Sadece bir selfie yükleyin, tüm denemeler için tekrar tekrar kullanabileceğiniz tam vücut avatarı oluşturalim.",
+      title: t.howItWorks.modes.avatar.title,
+      description: t.howItWorks.modes.avatar.description,
       color: "indigo",
       delay: 0.6,
     },
     {
       icon: Type,
-      title: "Metin-Model Üretimi",
-      description:
-        "Hayalinizdeki görünümü metin ile anlatın, yapay zekamızın vizyonunuza uygun stilize model oluşturmasını izleyin.",
+      title: t.howItWorks.modes.textToModel.title,
+      description: t.howItWorks.modes.textToModel.description,
       color: "emerald",
       delay: 0.8,
     },
@@ -74,15 +73,13 @@ export default function HowItWorksSection() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Yapay Zeka{" "}
+              {t.howItWorks.title.line1}{" "}
               <span className="bg-linear-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-                Modları
+                {t.howItWorks.title.line2}
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Moda deneyiminizi dönüştürmek için tasarlanmış dört güçlü yapay
-              zeka modundan birini seçin. Her mod, ihtiyaçlarınıza uygun eşsiz
-              yetenekler sunar.
+              {t.howItWorks.subtitle}
             </p>
           </motion.div>
         </div>
@@ -147,15 +144,7 @@ export default function HowItWorksSection() {
           transition={{ duration: 0.6, delay: 1.0 }}
           viewport={{ once: true }}
           className="text-center mt-16"
-        >
-          <motion.button
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 bg-linear-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 shadow-lg shadow-purple-500/25"
-          >
-            Yapay Zeka Modlarını Keşfet
-          </motion.button>
-        </motion.div>
+        ></motion.div>
       </Container>
     </section>
   );
