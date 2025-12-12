@@ -148,13 +148,11 @@ export default function BetaSignupSection() {
                       required
                     />
                   </div>
-                  <motion.button
+                  <button
                     type="submit"
-                    onClick={handleSubmit}
                     disabled={isLoading}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-8 py-4 cursor-pointer bg-white text-purple-600 font-semibold rounded-xl hover:bg-white/90 transition-all flex items-center justify-center gap-2 min-w-[140px]"
+                    onClick={handleSubmit}
+                    className="px-8 py-4 cursor-pointer bg-white text-purple-600 font-semibold rounded-xl hover:bg-white/90 hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-2 min-w-[140px] pointer-events-auto z-10 relative disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isLoading ? (
                       <div className="w-5 h-5 border-2 border-purple-600/20 border-t-purple-600 rounded-full animate-spin" />
@@ -164,7 +162,7 @@ export default function BetaSignupSection() {
                         <ArrowRight className="w-5 h-5" />
                       </>
                     )}
-                  </motion.button>
+                  </button>
                 </div>
               </form>
 
