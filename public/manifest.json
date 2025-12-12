@@ -1,0 +1,33 @@
+{
+  "name": "Fashaura AI - Virtual Fashion Try-On",
+  "short_name": "Fashaura AI",
+  "description": "Experience the future of fashion with our AI-powered virtual try-on technology. See how clothes look on you before you buy.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c8287b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["fashion", "technology", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}
